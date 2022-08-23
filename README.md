@@ -43,8 +43,7 @@ $ source ./venv/bin/activate
 .
 ├── animations
 ├── blender
-├── client.py
-├── create_env.sh
+├── mimos.sh
 ├── docker
 │ └── Dockerfile.vscode.dev
 ├── engine
