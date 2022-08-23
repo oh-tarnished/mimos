@@ -1,0 +1,10 @@
+{
+    "dockerFile": "../docker/Dockerfile.vscode.dev",
+    "runArgs": [
+        "--net=host"
+    ],
+    "extensions": [
+       "ms-python.python",
+       "ms-python.vscode-pylance"
+    ]
+}
