@@ -35,7 +35,7 @@ Activate the environment using the following command:
 $ source ./venv/bin/activate
 ```
 
-## Project Structure
+### Project Structure
 
 `Root`
 
@@ -76,7 +76,7 @@ engine
 └── requirements.txt
 ```
 
-## License: MIT
+### License: MIT
 
 ---
 
