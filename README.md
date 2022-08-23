@@ -1,6 +1,6 @@
 # Mimos
 
-Mimos 👾 is a simple, fast, and powerful animation framework build using blender for python 🐍.
+Mimos 👾 is a simple, fast, and powerful animation framework built for python 🐍.
 
 - Recommended Editor: `Visual Studio Code`
 
@@ -41,12 +41,12 @@ $ source ./venv/bin/activate
 
 ```
 .
-├── animations
-├── blender
+├── animations/
+├── blender/
 ├── mimos.sh
 ├── docker
 │ └── Dockerfile.vscode.dev
-├── engine
+├── engine/
 └── readme.md
 ```
 
