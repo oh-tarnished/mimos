@@ -2,7 +2,7 @@
 
 Mimos 👾 is a simple, fast, and powerful animation framework built for python 🐍.
 
-- Recommended Editor: `Visual Studio Code`
+> This has been tested and developed on linux systems only.
 
 ## Setup
 
@@ -13,67 +13,39 @@ Mimos 👾 is a simple, fast, and powerful animation framework built for python 
   - `install blender` (recommended version: 3.2.2)
   - `install python` (recommended version: 3.10)
 
-- Setting up the development environment on visual studio code (via docker)
+Make sure you have python 3.10 installed on your system.
 
-  - `install docker`
-  - `install visual studio code`
-  - `install blender` (recommended version: 3.2.2)
-  - `install python` (recommended version: 3.10)
-  - Open the project folder in visual studio code
-  - `install Remote - Containers extension for visual studio code from Microsoft`
-  - `ctrl + p ` opens a drawer in visual studio code and select `open in container` from the dropdown menu for the first time to create a container for the project folder. or when installed remote containers extension, select `open in container` from the side alert pop-up menu.
+### Engine
 
-Make sure you have python 3.10 installed on your system. To create virtual environment, run the following command
+To create virtual environment, run the following command
 
 ```
-$ mimos.sh
+$ cd engine
+$ ./create_venv.sh
 ```
 
-Activate the environment using the following command:
+Activate the environment using the following command (while in the engine folder):
 
 ```
 $ source ./venv/bin/activate
 ```
 
-### Project Structure
+## Run
 
-`Root`
-
-```
-.
-├── animations/
-├── blender/
-├── mimos.sh
-├── docker
-│ └── Dockerfile.vscode.dev
-├── engine/
-└── readme.md
-```
-
-`Engine`
+Make sure `engine/animations` folder contains the required animations. Start the engine using the following command
 
 ```
-engine
-├── app
-│   ├── __init__.py
-│   ├── controllers
-│   │   ├── __init__.py
-│   │   └── controllers.py
-│   ├── models
-│   │   ├── __init__.py
-│   │   └── models.py
-│   ├── routes
-│   │   ├── __init__.py
-│   │   └── routes.py
-│   ├── service
-│   │   ├── __init__.py
-│   │   └── blender.py
-│   └── utils
-│       ├── __init__.py
-│       └── config.py
-├── main.py
-├── readme.md
-└── requirements.txt
+$ cd engine
+$ ./mimos.sh
+```
+
+### Blender client
+
+To run the blender client after running mimos engine, run the following command:
+
+```
+$ cd clients/blender
+$ ./start-blender-client.sh -f <path to blend file> -a <animation name>
 ```
 
 ### License: MIT
