@@ -18,10 +18,16 @@ Make sure you have python 3.10 installed on your system.
 
 ### Engine
 
-To create virtual environment, run the following command
+To install Python 3.10.0, run the following command
 
 ```
 $ cd engine
+$ ./install_py.sh
+```
+
+To create virtual environment, run the following command
+
+```
 $ ./create_venv.sh
 ```
 
