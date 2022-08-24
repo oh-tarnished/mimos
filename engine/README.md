@@ -1,6 +1,6 @@
 # Mimos Engine
 
-## Development
+### Development
 
 - To run a development version of the engine, run (after activating the environment)
 
@@ -14,7 +14,7 @@
   $ blender -y <PATH_TO_BLEND_FILE> -P engine/app/service/blender.py -- <ANIMATION_NAME>
   ```
 
-## Production
+### Production
 
 To run the production version of the engine run (after activating the environment)
 
@@ -22,7 +22,7 @@ To run the production version of the engine run (after activating the environmen
 python3 main.py
 ```
 
-## License: MIT
+### License: MIT
 
 ---
 
