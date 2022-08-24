@@ -2,28 +2,20 @@
 
 ### Development
 
-- To run a development version of the engine, run (after activating the environment)
-
-  ```
-  $ uvicorn app.api:app --reload
-  ```
-
-- To run the blender animation
-
-  ```
-  $ blender -y <PATH_TO_BLEND_FILE> -P engine/app/service/blender.py -- <ANIMATION_NAME>
-  ```
-
-### Production
-
-To run the production version of the engine run (after activating the environment)
+To create virtual environment, run the following command
 
 ```
-python3 main.py
+$ ./create_venv.sh
 ```
 
-### License: MIT
+Activate the environment using the following command (while in the engine folder):
 
----
+```
+$ source ./venv/bin/activate
+```
 
-© 2022 Machani Robotics
+To run a development version of the engine, run (after activating the environment)
+
+```
+$ uvicorn app:app --reload
+```
