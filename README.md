@@ -12,6 +12,7 @@ Mimos 👾 is a simple, fast, and powerful animation framework built for python 
 
   - `install blender` (recommended version: 3.2.2)
   - `install python` (recommended version: 3.10)
+  - `install virtualenv`
 
 Make sure you have python 3.10 installed on your system.
 

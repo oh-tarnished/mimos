@@ -2,6 +2,12 @@
 
 ### Development
 
+Install Python 3.10.0 using pyenv
+
+```
+$ ./install_py.sh
+```
+
 To create virtual environment, run the following command
 
 ```
