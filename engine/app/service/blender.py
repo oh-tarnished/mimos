@@ -1,6 +1,4 @@
 # consists of Operator class, used to create a custom anim in blender
-
-from array import array
 import bpy
 import sys
 import json
@@ -8,7 +6,6 @@ import queue
 import asyncio
 import threading
 import websockets
-from tokenize import String
 
 
 def initialize_blender(object: str):
@@ -94,6 +91,7 @@ class AnimationOperator(bpy.types.Operator):
         Returns:
             _type_: returns  {'FINISHED'} or {'CANCELLED'} or {'PASS_THROUGH'} or {'INTERFACE'} or {'RUNNING_MODAL'}.
         """
+        print("modal method ....")
         if event.type in {"ESC", "RIGHTMOUSE"}:
             self.cancel(context)
             return {"FINISHED"}
@@ -107,7 +105,7 @@ class AnimationOperator(bpy.types.Operator):
                 run(joint_name, angle)
         return {"PASS_THROUGH"}
 
-    # obvious executes operator
+    # executes operator
     def execute(self, context):
         """
         This function is used to execute the operator.
@@ -124,6 +122,7 @@ class AnimationOperator(bpy.types.Operator):
             self.joint_name,
             self.frame,
         )
+        print(" execute method ....")
         self.report({"INFO"}, message)
         wm = context.window_manager
         # adding timer event for step of 0.04 secs
@@ -167,7 +166,7 @@ class AnimationOperator(bpy.types.Operator):
         Args:
             context (_type_): blender context.
         """
-
+        print("cancel method...")
         wm = context.window_manager
         wm.event_timer_remove(self._timer)
 
@@ -175,6 +174,7 @@ class AnimationOperator(bpy.types.Operator):
         """
         This function is used to delete the operator.
         """
+        print("delete method...")
         if self.streaming_thread:
             self.streaming_thread.join()
 

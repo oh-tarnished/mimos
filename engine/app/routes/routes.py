@@ -1,6 +1,6 @@
-from fastapi import APIRouter, HTTPException, WebSocket
 import app.models.models as models
 import app.controllers.controllers as controllers
+from fastapi import APIRouter, HTTPException, WebSocket
 
 router = APIRouter()
 
