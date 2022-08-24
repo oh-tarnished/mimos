@@ -1,4 +1,4 @@
-FROM ubuntu@sha256:6f911cac13c27a4f9936b949161f57f1fd27228b821e9912815fa941dc7bec7f 
+FROM ubuntu@sha256:42ba2dfce475de1113d55602d40af18415897167d47c2045ec7b6d9746ff148f
 
 ARG USERNAME=Mimos
 ARG USER_UID=1000
@@ -12,16 +12,11 @@ RUN apt update && \
     ca-certificates \
     curl \
     build-essential \
-    redis-server \
     git \
     ssh \
     sudo \
-    cmake \
-    python3 \
-    python3-pip \
-    zlib1g-dev \
-    pkg-config \
-    libssl-dev
+    python3.10 \
+    python3-pip 
 
 # adding dev user
 RUN groupadd --gid $USER_GID $USERNAME \
