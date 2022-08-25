@@ -2,7 +2,7 @@
 
 Mimos 👾 is a simple, fast, and powerful animation framework built using Python 🐍.
 
-> This has been tested and developed on Linux systems(Ubuntu) only.
+> This has been developed and tested on Linux systems(Ubuntu) only.
 
 ## Setup
 
@@ -13,6 +13,12 @@ Mimos 👾 is a simple, fast, and powerful animation framework built using Pytho
   - `install python` ([recommended version: 3.10.0](https://www.python.org/downloads/release/python-3100/))
   - `install blender` ([recommended version: 3.2.2](https://www.blender.org/download/releases/3-2/))
   - `install virtualenv`
+
+To run blender from terminal, add the following command to ~/.bashrc or ~/.profile pointing to the directory with Blender’s binary:
+
+```
+$ export PATH=/path/to/blender/directory:$PATH
+```
 
 Make sure you have python 3.10 installed on your system. Start the Engine first, followed by Blender Client.
 
