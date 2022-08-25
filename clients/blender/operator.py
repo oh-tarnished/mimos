@@ -56,8 +56,8 @@ def run(joint_name: str, joint_angle: list):
         joint_name (str): joint name.
         joint_angle (list): list of euler angles.
     """
-    initialize_blender("SKELE")
-    obj = bpy.data.objects["SKELE"]
+    initialize_blender("BODY_Bones")
+    obj = bpy.data.objects["BODY_Bones"]
     apply_angle(obj, joint_name, joint_angle)
 
 
@@ -153,7 +153,7 @@ class AnimationOperator(bpy.types.Operator):
             except websockets.exceptions.ConnectionClosedError:
                 queue.put_nowait(None)
                 return
-            for _ in range(animation_info["end_frame"]):
+            for _ in range(animation_info["start_frame"], animation_info["end_frame"]):
                 queue.put_nowait(json.loads(await ws.recv()))
             queue.put_nowait(None)
 

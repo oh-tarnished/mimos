@@ -16,7 +16,7 @@ def get_animation(animation_name: str) -> Optional[AnimationData]:
     Returns:
         Optional[AnimationData]: returns the animation data if found. Otherwise returns None.
     """
-    file_name = f"{animation_name}.toml"
+    file_name = f"{animation_name.lower()}.toml"
     if file_name not in os.listdir(config.animations_dir):
         return None
 
