@@ -47,6 +47,8 @@ Execute this command in `clients/blender` directory. To run the blender client a
 $ ./start-blender-client.sh -f <path to blend file> -a <animation name>
 ```
 
+Animation name here is same as toml file name 
+
 ### License: MIT
 
 ---
