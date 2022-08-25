@@ -1,8 +1,8 @@
 # Mimos
 
-Mimos 👾 is a simple, fast, and powerful animation framework built for python 🐍.
+Mimos 👾 is a simple, fast, and powerful animation framework built using Python 🐍.
 
-> This has been tested and developed on linux systems only.
+> This has been tested and developed on Linux systems(Ubuntu) only.
 
 ## Setup
 
@@ -14,32 +14,30 @@ Mimos 👾 is a simple, fast, and powerful animation framework built for python 
   - `install blender` ([recommended version: 3.2.2](https://www.blender.org/download/releases/3-2/))
   - `install virtualenv`
 
-Make sure you have python 3.10 installed on your system.
+Make sure you have python 3.10 installed on your system. Start the Engine first, followed by Blender Client.
 
 ### Engine
 
-Make sure `engine/animations` folder contains the required animations. Start the engine using the following command
+Make sure `engine/animations` folder contains the required animations. Execute these commands in `engine/` directory.
+Start the engine using the following command
 
 #### Development
 
 ```
-$ cd engine/
 $ uvicorn app:app --reload
 ```
 
 #### Production
 
 ```
-$ cd engine/
 $ python main.py
 ```
 
-### Blender client
+### Blender Client
 
-To run the blender client after running mimos engine, run the following command:
+Execute this command in `clients/blender` directory. To run the blender client after running mimos engine, execute the following command:
 
 ```
-$ cd clients/blender
 $ ./start-blender-client.sh -f <path to blend file> -a <animation name>
 ```
 
