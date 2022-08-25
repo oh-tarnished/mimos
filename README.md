@@ -10,40 +10,28 @@ Mimos 👾 is a simple, fast, and powerful animation framework built for python 
 
 - Setting up the development environment on visual studio code (locally)
 
-  - `install blender` (recommended version: 3.2.2)
-  - `install python` (recommended version: 3.10)
+  - `install python` ([recommended version: 3.10.0](https://www.python.org/downloads/release/python-3100/))
+  - `install blender` ([recommended version: 3.2.2](https://www.blender.org/download/releases/3-2/))
   - `install virtualenv`
 
 Make sure you have python 3.10 installed on your system.
 
 ### Engine
 
-To install Python 3.10.0, run the following command
-
-```
-$ cd engine
-$ ./install_py.sh
-```
-
-To create virtual environment, run the following command
-
-```
-$ ./create_venv.sh
-```
-
-Activate the environment using the following command (while in the engine folder):
-
-```
-$ source ./venv/bin/activate
-```
-
-## Run
-
 Make sure `engine/animations` folder contains the required animations. Start the engine using the following command
 
+#### Development
+
 ```
-$ cd engine
-$ ./mimos.sh
+$ cd engine/
+$ uvicorn app:app --reload
+```
+
+#### Production
+
+```
+$ cd engine/
+$ python main.py
 ```
 
 ### Blender client
