@@ -20,7 +20,9 @@ To run blender from terminal, add the following command to ~/.bashrc or ~/.profi
 $ export PATH=/path/to/blender/directory:$PATH
 ```
 
-Make sure you have python 3.10 installed on your system. Start the Engine first, followed by Blender Client.
+Make sure you have **Python 3.10** installed on your system. Also, **Blender-as-Python**(bpy) module is required & can be installed with [this wheel file](https://drive.google.com/drive/folders/1y9VGD_-fZwuAUEcKxiCc2DUrJqjhsJIR?usp=sharing). 
+
+To run Mimos, start the Engine first, followed by Blender Client.
 
 ### Engine
 
@@ -46,6 +48,8 @@ Execute this command in `clients/blender` directory. To run the blender client a
 ```
 $ ./start-blender-client.sh -f <path to blend file> -a <animation name>
 ```
+
+Animation name here is same as Toml file name in `engine/animations` folder
 
 ### License: MIT
 
