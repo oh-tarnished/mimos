@@ -54,7 +54,7 @@ Start the engine using the following command
 
 - **Pose**
 
-  Start Openpose server using this repo. Keeping it seperate, as it's inside a Docker container.
+  OpenPose server is work in progress :hammer_and_wrench:
 
   To start Client, run this
 
