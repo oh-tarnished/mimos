@@ -22,4 +22,4 @@ if [ -z "${BLEND_FILE}" ] || [ -z "${ACTION}" ]; then
 fi
 
 # starting blender
-blender -y $BLEND_FILE -P operator.py -- $ACTION
+blender -y $BLEND_FILE -P animationoperator.py -- $ACTION

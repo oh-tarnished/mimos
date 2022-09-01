@@ -145,7 +145,9 @@ class AnimationOperator(bpy.types.Operator):
             queue (_type_): queue.
             animation_name (_type_): animation name.
         """
-        async with websockets.connect(f"ws://localhost:8000/pose") as ws:
+        async with websockets.connect(
+            f"ws://localhost:8000/animations?animation_name={animation_name}"
+        ) as ws:
             try:
                 animation_info = json.loads(await ws.recv())
             except websockets.exceptions.ConnectionClosedError:
