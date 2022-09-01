@@ -33,7 +33,7 @@ Start the engine using the following command
 
 - **Animation**
 
-  To start Server, run this
+  To start Animation Server, run this
 
   ```
   $ # Development Mode
@@ -43,7 +43,7 @@ Start the engine using the following command
   $ python3.10 main.py
   ```
 
-  To start Client, run this
+  To start Blender Client, run this
 
   ```
   $ cd clients/blender/animation
@@ -56,7 +56,7 @@ Start the engine using the following command
 
   OpenPose server is work in progress :hammer_and_wrench:
 
-  To start Client, run this
+  To start Blender Client, run this(not functional yet)
 
   ```
   $ cd clients/blender/pose
