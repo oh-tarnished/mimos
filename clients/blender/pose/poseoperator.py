@@ -15,10 +15,29 @@ def initialize_blender(object: str):
     return (context, obj, bones)
 
 
+# "upper_lid.R.DN", "upper_lid.L.DN" - multiply by -1
+# "lip_Upper.L", "lip_Upper.R", "lip_Upper.C"  - multiply by +1
+# "lip_lower.L", "lip_lower.R", "lip_lower.C" - multiply by -1
+# "brow.R.out", "brow.R.in", "brow.C" - multiply by +1
+# "lip_streach.R","lip_streach.L" - multiply by +1
+
+negative_scale = [
+    "lip_lower.L",
+    "lip_lower.R",
+    "lip_lower.C",
+    "upper_lid.R.DN",
+    "upper_lid.L.DN",
+]
+
+
 def apply_location(obj, bone: str, location: list):
     if bone in obj.pose.bones.keys():
         boneobj = obj.pose.bones[bone]
-        boneobj.location = location
+        scale_x, scale_y, scale_z = 1, 1, 1
+
+        boneobj.location.x = location[0] * scale_x
+        boneobj.location.y = location[1] * scale_y
+        boneobj.location.z = location[2] * scale_z
     else:
         pass
         # print(f"Bone {bone} not found in {obj}")
@@ -48,8 +67,9 @@ class PoseMimicOperator(bpy.types.Operator):
             # if json_resp:
             for joint_name, loc_array in json_resp.items():
                 # scale values bw 0.001 to -0.001
-                scaled_loc_array = [(0.2 * loc - 0.01) for loc in loc_array]
-                run("Stewart Platform", joint_name, scaled_loc_array)
+                scaled_loc_array = [(0.02 * loc - 0.01) for loc in loc_array]
+                # taking only z value
+                run("Stewart Platform", joint_name, [0, 0, scaled_loc_array[-1]])
             # else:
             #     print("received quit message", json_resp)
         return {"PASS_THROUGH"}
