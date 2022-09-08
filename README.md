@@ -54,7 +54,13 @@ Start the engine using the following command
 
 - **Pose**
 
-  Start Openpose server using this repo. Keeping it seperate, as it's inside a Docker container.
+  > **_NOTE:_** Before starting the pose server, make sure camera is connected. And run `xhost +` in terminal.
+
+  Start Openpose server using this command
+
+  ```
+  $ docker run --gpus all --net host --privileged -v "/tmp/.X11-unix:/tmp/.X11-unix" --device "/dev/video0:/dev/video0" public.ecr.aws/i8e8x2j1/machanirobotics:mimos-0.1.0
+  ```
 
   To start Client, run this
 
@@ -64,6 +70,7 @@ Start the engine using the following command
 
   $ # To check openpose stream
   $ python3 streamclient.py
+
   ```
 
 ### License: MIT
