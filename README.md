@@ -33,7 +33,7 @@ Start the engine using the following command
 
 - **Animation**
 
-  To start Server, run this
+  To start Animation Server, run this
 
   ```
   $ # Development Mode
@@ -43,7 +43,7 @@ Start the engine using the following command
   $ python3.10 main.py
   ```
 
-  To start Client, run this
+  To start Blender Client, run this
 
   ```
   $ cd clients/blender/animation
@@ -62,7 +62,7 @@ Start the engine using the following command
   $ docker run --gpus all --net host --privileged -v "/tmp/.X11-unix:/tmp/.X11-unix" --device "/dev/video0:/dev/video0" public.ecr.aws/i8e8x2j1/machanirobotics:mimos-0.1.0
   ```
 
-  To start Client, run this
+  To start Blender Client, run this(not functional yet)
 
   ```
   $ cd clients/blender/pose
