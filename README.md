@@ -1,5 +1,10 @@
 # Mimos
 
+![](https://img.shields.io/badge/Python-3776AB.svg?style=for-the-badge&logo=Python&logoColor=white)
+![](https://img.shields.io/badge/Blender-F5792A.svg?style=for-the-badge&logo=Blender&logoColor=white)
+![](https://img.shields.io/badge/ZeroMQ-DF0000.svg?style=for-the-badge&logo=ZeroMQ&logoColor=white)
+![](https://img.shields.io/badge/Docker-2496ED.svg?style=for-the-badge&logo=Docker&logoColor=white)
+
 Mimos 👾 is a simple, fast, and powerful animation framework built using Python 🐍.
 
 > This has been developed and tested on Linux systems(Ubuntu) only.
@@ -22,18 +27,13 @@ $ export PATH=/path/to/blender/directory:$PATH
 
 Make sure you have **Python 3.10** installed on your system. Also, **Blender-as-Python**(bpy) module is required & can be installed with [this wheel file](https://drive.google.com/drive/folders/1y9VGD_-fZwuAUEcKxiCc2DUrJqjhsJIR?usp=sharing).
 
-To run Mimos, start the Engine first, followed by Blender Client.
-
-### Engine
-
-Make sure `engine/animations` folder contains the required animations. Execute these commands in `engine/` directory.
-Start the engine using the following command
-
 ### Blender
 
 - **Animation**
 
-  To start Animation Server, run this
+  > **_NOTE:_** > Make sure **engine/animations** folder contains the required animations. Execute these commands in **engine/** directory.
+
+  Start Animation Server, run this
 
   ```
   $ # Development Mode
@@ -62,7 +62,7 @@ Start the engine using the following command
   $ docker run --gpus all --net host --privileged -v "/tmp/.X11-unix:/tmp/.X11-unix" --device "/dev/video0:/dev/video0" public.ecr.aws/i8e8x2j1/machanirobotics:mimos-0.1.0
   ```
 
-  To start Blender Client, run this(not functional yet)
+  To start Blender Client, run this
 
   ```
   $ cd clients/blender/pose
