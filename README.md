@@ -31,7 +31,7 @@ Make sure you have **Python 3.10** installed on your system. Also, **Blender-as-
 
 - **Animation**
 
-  > **_NOTE:_** > Make sure **engine/animations** folder contains the required animations. Execute these commands in **engine/** directory.
+  > **_NOTE:_** Make sure **engine/animations** folder contains the required animations. Execute these commands in **engine/** directory.
 
   Start Animation Server, run this
 
@@ -54,7 +54,7 @@ Make sure you have **Python 3.10** installed on your system. Also, **Blender-as-
 
 - **Pose**
 
-  > **_NOTE:_** Before starting the pose server, make sure camera is connected. And run `xhost +` in terminal.
+  > **_NOTE:_** Before starting the pose server, make sure camera is connected. And run `xhost +` in terminal. Also install [pyzmq](https://pypi.org/project/pyzmq/) in Blender's Python Environment.
 
   Start Openpose server using this command
 
