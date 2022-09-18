@@ -5,8 +5,7 @@
 ![](https://img.shields.io/badge/ZeroMQ-DF0000.svg?style=for-the-badge&logo=ZeroMQ&logoColor=white)
 ![](https://img.shields.io/badge/Docker-2496ED.svg?style=for-the-badge&logo=Docker&logoColor=white)
 
-Mimos 👾 is a simple, fast, and powerful animation framework built using Python 🐍.
-
+Mimos 👾 is a simple, fast, and powerful animation framework built using Python.
 > This has been developed and tested on Linux systems(Ubuntu) only.
 
 ## Setup
