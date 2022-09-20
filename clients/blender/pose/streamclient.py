@@ -3,7 +3,6 @@ import numpy as np
 import zmq
 import base64
 
-
 ctx = zmq.Context()
 stream_socket = ctx.socket(zmq.SUB)
 stream_socket.bind("tcp://*:6666")
