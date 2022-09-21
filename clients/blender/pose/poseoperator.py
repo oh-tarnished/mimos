@@ -8,8 +8,9 @@ import string
 import numpy as np
 
 sys.path.insert(0, os.getcwd())
+# inserting current directory to load utils and transform module
 from transform import get_angle, keypoint_joint_map
-from poseutils import apply_location, apply_rotation
+import utils as poseutils
 
 # map face and body to values, for face its location, while for arm its rotation
 body_object = bpy.data.objects["BODY_Bones"]
@@ -35,6 +36,7 @@ class PoseMimicOperator(bpy.types.Operator):
             json_response = json.loads(self.keypoint_socket.recv_json())
 
             for joint_name, value_array in json_response.items():
+                print("joint nameP::", joint_name)
                 if joint_name in body_bones:
                     bpy_object = "BODY_Bones"
                     joint_info = keypoint_joint_map[joint_name]
@@ -52,12 +54,14 @@ class PoseMimicOperator(bpy.types.Operator):
                         )
                     else:
                         rotation_value = 0
-                    apply_rotation(bpy_object, joint_name, rotation_value, joint_axis)
+                    poseutils.apply_rotation(
+                        bpy_object, joint_name, rotation_value, joint_axis
+                    )
 
                 elif joint_name in face_bones:
                     bpy_object = "Stewart Platform"
                     location_array = [(0.02 * loc - 0.01) for loc in value_array[:2]]
-                    apply_location(bpy_object, joint_name, location_array)
+                    poseutils.apply_location(bpy_object, joint_name, location_array)
 
         return {"PASS_THROUGH"}
 

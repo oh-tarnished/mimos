@@ -5,10 +5,6 @@ from transform import keypoint_joint_map
 def initialize_blender(object: str):
     """
     This function is used to initialize the blender environment.
-    Args:
-        object (_type_): str
-    Returns:
-        tuple: returns the object with the name object context.object and bones as a tuple.
     """
     context = bpy.context
     obj = bpy.data.objects[object]
@@ -20,6 +16,9 @@ def initialize_blender(object: str):
 
 
 def apply_location(bpy_obj_name: str, bone: str, location: list):
+    """
+    Applies Location to the shapekey of a blender object.
+    """
     initialize_blender(bpy_obj_name)
     obj = bpy.data.objects[bpy_obj_name]
     if bone in obj.pose.bones.keys():
@@ -33,6 +32,9 @@ def apply_location(bpy_obj_name: str, bone: str, location: list):
 
 
 def apply_rotation(bpy_obj_name: str, bone: str, rotation_value: float, axis: str):
+    """
+    Applies Rotation to the bone of a blender object.
+    """
     initialize_blender(bpy_obj_name)
     obj = bpy.data.objects[bpy_obj_name]
     axis_index = {"x": 0, "y": 1, "z": 1}  # keeping x constant, changing y and z

@@ -9,7 +9,7 @@ import threading
 import websockets
 
 sys.path.insert(0, os.getcwd())
-from animutils import run
+import utils as animutils
 
 
 class AnimationOperator(bpy.types.Operator):
@@ -41,7 +41,7 @@ class AnimationOperator(bpy.types.Operator):
                 return {"FINISHED"}
 
             for joint_name, angle in frame["angles"].items():
-                run(joint_name, angle)
+                animutils.run(joint_name, angle)
         return {"PASS_THROUGH"}
 
     def execute(self, context):
