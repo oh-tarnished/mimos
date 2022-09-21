@@ -1,4 +1,5 @@
 # consists of Operator class, used to create a custom anim in blender
+import os
 import bpy
 import sys
 import json
@@ -7,58 +8,8 @@ import asyncio
 import threading
 import websockets
 
-
-def initialize_blender(object: str):
-    """
-    This function is used to initialize the blender environment.
-
-    Args:
-        object (_type_): str
-
-    Returns:
-        tuple: returns the object with the name object context.object and bones as a tuple.
-    """
-    context = bpy.context
-    obj = bpy.data.objects[object]
-    bones = obj.pose.bones
-    # set action to object
-    # create the animation data if it doesn't exist
-    if not obj.animation_data:
-        obj.animation_data_create()
-    return (context, obj, bones)
-
-
-def apply_angle(obj, bone: str, joint_angle: list):
-    """
-
-    This function is used to apply the angle to the bone.
-
-    Args:
-        obj (_type_): blender object.
-        bone (str): bone name.
-        joint_angle (list): list of euler angles.
-    """
-
-    if bone in obj.pose.bones.keys():
-        boneobj = obj.pose.bones[bone]
-        boneobj.rotation_euler = joint_angle
-    else:
-        print(f"Bone {bone} not found in {obj}")
-
-
-def run(joint_name: str, joint_angle: list):
-    """
-    This function is used to run the animation.
-    It will apply the angle to the bone.
-
-
-    Args:
-        joint_name (str): joint name.
-        joint_angle (list): list of euler angles.
-    """
-    initialize_blender("BODY_Bones")
-    obj = bpy.data.objects["BODY_Bones"]
-    apply_angle(obj, joint_name, joint_angle)
+sys.path.insert(0, os.getcwd())
+from animutils import run
 
 
 class AnimationOperator(bpy.types.Operator):
@@ -75,22 +26,11 @@ class AnimationOperator(bpy.types.Operator):
     joint_name: bpy.props.StringProperty(name="Enter the joint name")
     frame: bpy.props.IntProperty(name="Enter the number of frames", default=1)
 
-    # create thread and add get_frame method
     def __init__(self):
         self.queue = queue.SimpleQueue()
         self.streaming_thread = None
 
     def modal(self, context, event):
-        """
-        This operator defines a Operator.modal function that will keep being run to handle events until it returns {'FINISHED'} or {'CANCELLED'}.
-
-        Args:
-            context (_type_): blender context.
-            event (_type_): blender event.
-
-        Returns:
-            _type_: returns  {'FINISHED'} or {'CANCELLED'} or {'PASS_THROUGH'} or {'INTERFACE'} or {'RUNNING_MODAL'}.
-        """
         if event.type in {"ESC", "RIGHTMOUSE"}:
             self.cancel(context)
             return {"FINISHED"}
@@ -104,18 +44,7 @@ class AnimationOperator(bpy.types.Operator):
                 run(joint_name, angle)
         return {"PASS_THROUGH"}
 
-    # executes operator
     def execute(self, context):
-        """
-        This function is used to execute the operator.
-
-        Args:
-            context (_type_): blender context.
-
-        Returns:
-            _type_: returns  {'FINISHED'} or {'CANCELLED'} or {'PASS_THROUGH'} or {'INTERFACE'} or {'RUNNING_MODAL'}.
-
-        """
         message = "Popup Values: '%s' '%s' '%d'" % (
             self.animation_name,
             self.joint_name,
@@ -158,19 +87,10 @@ class AnimationOperator(bpy.types.Operator):
             queue.put_nowait(None)
 
     def cancel(self, context):
-        """
-        This function is used to cancel the operator.
-
-        Args:
-            context (_type_): blender context.
-        """
         wm = context.window_manager
         wm.event_timer_remove(self._timer)
 
     def __del__(self):
-        """
-        This function is used to delete the operator.
-        """
         if self.streaming_thread:
             self.streaming_thread.join()
 

@@ -8,91 +8,14 @@ import string
 import numpy as np
 
 sys.path.insert(0, os.getcwd())
-from calculate import get_angle
-
-
-def initialize_blender(object: str):
-    context = bpy.context
-    obj = bpy.data.objects[object]
-    bones = obj.pose.bones
-    # set action to object
-    # create the animation data if it doesn't exist
-    if not obj.animation_data:
-        obj.animation_data_create()
-    return (context, obj, bones)
-
-
-# R_Elbow => R_Wrist + R_Shoulder + R_Elbow
-# R_Shoulder => Neck + R_Elbow + R_Shoulder
-# L_Elbow => L_Wrist + L_Shoulder + L_Elbow
-# L_Shoulder => Neck + L_Elbow + L_Shoulder
-
-
-keypoint_joint_map = {
-    "R_Shoulder": {
-        "id": 2,
-        "scale": -0.5,
-        "axis": "x",
-        "euler": ["neck", "R_Elbow", "R_Shoulder"],
-    },
-    "R_Elbow": {
-        "id": 3,
-        "scale": -0.5,
-        "axis": "z",
-        "euler": ["R_Shoulder", "R_Elbow", "R_Wrist"],
-    },
-    "R_Wrist": {"id": 4, "scale": -1, "axis": "x", "euler": []},
-    "L_Shoulder": {
-        "id": 5,
-        "scale": -0.5,
-        "axis": "x",
-        "euler": ["neck", "L_Elbow", "L_Shoulder"],
-    },
-    "L_Elbow": {
-        "id": 6,
-        "scale": -0.5,
-        "axis": "z",
-        "euler": ["L_Shoulder", "L_Elbow", "L_Wrist"],
-    },
-    "L_Wrist": {"id": 7, "scale": -1, "axis": "x", "euler": []},
-    "neck": {"id": 0, "scale": 1, "axis": "x", "euler": []},
-}
-
+from transform import get_angle, keypoint_joint_map
+from poseutils import apply_location, apply_rotation
 
 # map face and body to values, for face its location, while for arm its rotation
 body_object = bpy.data.objects["BODY_Bones"]
 body_bones = [bone.name for bone in body_object.pose.bones]
 face_object = bpy.data.objects["Stewart Platform"]
 face_bones = [bone.name for bone in face_object.pose.bones]
-
-
-def apply_location(bpy_obj_name: string, bone: str, location: list):
-    initialize_blender(bpy_obj_name)
-    obj = bpy.data.objects[bpy_obj_name]
-    if bone in obj.pose.bones.keys():
-        boneobj = obj.pose.bones[bone]
-        scale_x, scale_y, scale_z = 1, 1, 1
-        boneobj.location.x = location[0] * scale_x
-        boneobj.location.y = location[1] * scale_y
-        boneobj.location.z = location[2] * scale_z
-    else:
-        pass
-        print(f"Bone {bone} not found in {obj}")
-
-
-def apply_rotation(
-    bpy_obj_name: string, bone: str, rotation_value: float, axis: string
-):
-    initialize_blender(bpy_obj_name)
-    obj = bpy.data.objects[bpy_obj_name]
-    axis_index = {"x": 0, "y": 1, "z": 2}
-    joint_axis_index = axis_index[axis.lower()]
-    scale = keypoint_joint_map[bone]["scale"]
-    if bone in obj.pose.bones.keys():
-        boneobj = obj.pose.bones[bone]
-        boneobj.rotation_euler[joint_axis_index] = rotation_value * scale
-    else:
-        print(f"Bone {bone} not found in {obj}")
 
 
 class PoseMimicOperator(bpy.types.Operator):
@@ -133,10 +56,9 @@ class PoseMimicOperator(bpy.types.Operator):
 
                 elif joint_name in face_bones:
                     bpy_object = "Stewart Platform"
-                    scaled_array = [(0.02 * loc - 0.01) for loc in value_array]
-                    # changing only z axis
-                    location_array = [0, 0, scaled_array[-1]]
+                    location_array = [(0.02 * loc - 0.01) for loc in value_array[:2]]
                     apply_location(bpy_object, joint_name, location_array)
+
         return {"PASS_THROUGH"}
 
     def execute(self, context):

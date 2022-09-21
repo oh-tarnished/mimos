@@ -6,6 +6,7 @@
 ![](https://img.shields.io/badge/Docker-2496ED.svg?style=for-the-badge&logo=Docker&logoColor=white)
 
 Mimos 👾 is a simple, fast, and powerful animation framework built using Python.
+
 > This has been developed and tested on Linux systems(Ubuntu) only.
 
 ## Setup
@@ -25,6 +26,12 @@ $ export PATH=/path/to/blender/directory:$PATH
 ```
 
 Make sure you have **Python 3.10** installed on your system. Also, **Blender-as-Python**(bpy) module is required & can be installed with [this wheel file](https://drive.google.com/drive/folders/1y9VGD_-fZwuAUEcKxiCc2DUrJqjhsJIR?usp=sharing).
+
+Since PoseOperator is using ZeroMQ for streaming Pose, you need to install the library inside blender's python lib folder using this
+
+```
+$ python3 -m pip install pyzmq -t .
+```
 
 ### Blender
 
