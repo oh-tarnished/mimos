@@ -24,10 +24,9 @@ def apply_location(bpy_obj_name: str, bone: str, location: list):
     obj = bpy.data.objects[bpy_obj_name]
     if bone in obj.pose.bones.keys():
         boneobj = obj.pose.bones[bone]
-        scale_x, scale_z = 1, 1, 1
+        scale_x, scale_z = 1, 1
         boneobj.location.x = location[0] * scale_x
         boneobj.location.z = location[1] * scale_z
-        # boneobj.location.z = location[2] * scale_z
     else:
         pass
         print(f"Bone {bone} not found in {obj}")
